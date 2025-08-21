@@ -21,7 +21,7 @@ public class Main {
 
 
         String boletim = "Nota de Thalita: 10\nNota de João: 10\n Nota de Matheus: 10";
-        System.out.println("📄 Boletim :\n" + boletim);
+        System.out.println("Boletim :\n" + boletim);
 
 
         // Boletim passa pelo processamento de encriptografia
