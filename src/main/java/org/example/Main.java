@@ -48,7 +48,7 @@ public class Main {
         System.out.println("\n Chave AES criptografada com a chave pública dos pais:");
         System.out.println(Base64.getEncoder().encodeToString(chaveAESCriptografada));
 
-        System.out.println("\n✍ Assinatura digital feita com a chave privada da escola:");
+        System.out.println("\nAssinatura digital feita com a chave privada da escola:");
         System.out.println(assinaturaBase64);
 
     }
