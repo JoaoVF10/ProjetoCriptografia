@@ -40,15 +40,15 @@ public class Main {
 
 
         // Simulando os dados para envio
-        System.out.println("\n📦 Enviando boletim aos responsáveis...\n");
+        System.out.println("\n Enviando boletim aos responsáveis...\n");
 
-        System.out.println("🔐 Boletim criptografado com AES:");
+        System.out.println(" Boletim criptografado com AES:");
         System.out.println(Base64.getEncoder().encodeToString(boletimCriptografado));
 
-        System.out.println("\n🔒 Chave AES criptografada com a chave pública dos pais:");
+        System.out.println("\n Chave AES criptografada com a chave pública dos pais:");
         System.out.println(Base64.getEncoder().encodeToString(chaveAESCriptografada));
 
-        System.out.println("\n✍️ Assinatura digital feita com a chave privada da escola:");
+        System.out.println("\n✍ Assinatura digital feita com a chave privada da escola:");
         System.out.println(assinaturaBase64);
 
     }
