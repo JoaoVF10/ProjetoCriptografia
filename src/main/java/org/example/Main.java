@@ -2,6 +2,7 @@ package org.example;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 import java.security.KeyPair;
 import java.util.Base64;
 
@@ -20,7 +21,7 @@ public class Main {
         KeyPair parChavesPais = CriptoAssimetrica.geraRSAKeyPair();
 
 
-        String boletim = "Nota de Thalita: 10\nNota de João: 10\n Nota de Matheus: 10";
+        String boletim = "Nota de Thallyta: 10\nNota de João: 10\n Nota de Matheus: 10";
         System.out.println("Boletim :\n" + boletim);
 
 
@@ -50,6 +51,18 @@ public class Main {
 
         System.out.println("\nAssinatura digital feita com a chave privada da escola:");
         System.out.println(assinaturaBase64);
+
+        System.out.println("\n\n Pais estão recebendo os dados...");
+
+        byte[] chaveAESDecodificadaBase64 = CriptoAssimetrica.decripta(chaveAESCriptografada, parChavesPais.getPrivate()).getBytes();
+        byte[] chaveAESDecodificada = Base64.getDecoder().decode(chaveAESDecodificadaBase64);
+        SecretKey chaveAESRecuperada = new SecretKeySpec(chaveAESDecodificada, 0, chaveAESDecodificada.length, "AES");
+
+        String boletimAberto = CriptoSimetrica.decripta(boletimCriptografado, chaveAESRecuperada, iv);
+        System.out.println("\n Boletim Decriptado:\n" + boletimAberto);
+
+        boolean assinaturaValida = AssinaturaDigital.verificaSHA256RSA(boletimCriptografado, assinaturaBase64, parChavesEscola.getPublic());
+        System.out.println("\n Assinatura válida? " + assinaturaValida);
 
     }
 }
